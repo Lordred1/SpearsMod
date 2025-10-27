@@ -1,32 +1,39 @@
 #include <mc/src/common/world/item/registry/ItemRegistry.hpp>
 #include <mc/src/common/world/item/ItemStack.hpp>
-
+#include <mc/src/common/world/actor/ActorDamageSource.hpp>
+#include <mc/src/common/world/phys/Vec3.hpp>
+#include <mc/src/common/world/actor/Mob.hpp>
 #include <amethyst/Log.hpp>
 
 #include "Spears.hpp"
 
-float SpeedDamageRatio;
-class WoodenSpear : public Item {
+
+
+float SpeedDamageRatio = 1.4f;
+class WoodenSpear : public Item{
 public:
 	WoodenSpear(const std::string& identifier, short numId)
 		: Item(identifier, numId)
 	{
 		Log::Info("SpearItem created with id: {}", numId);
+		canBeCharged();
+	}
+	void hurtActor(ItemStack& stack, Actor& target, Mob& attacker) const override {
+		float playerSpeed = attacker.getSpeed(); // incomplete type mob is not allowed # No compile error when adding Mob.hpp
+		float newDamage = (playerSpeed / SpeedDamageRatio) + 2;
 	}
 	ItemStack& use(ItemStack& itemStack, Player& player) const override {
-		float SpeedDamageRatio = 1.4f;
 		const CompoundTag* tag = itemStack.mUserData;
-		int CurrentItemHealth = Item::getDamageValue(tag);
-		Log::Info("Old Health: {}", CurrentItemHealth);
-		CurrentItemHealth--;
-		Item::setDamageValue(itemStack, CurrentItemHealth);
-		Log::Info("Spear Activated, Current Item Health: {}", CurrentItemHealth);
+		int CurrentItemHelth = Item::getDamageValue(tag);
+		CurrentItemHelth++;
+		Item::setDamageValue(itemStack, CurrentItemHelth);
 		return itemStack;
 	}
 };
 
 void ModSpears::registerItems(RegisterItemsEvent& ev){
-	auto& WoodenSpears = ev.itemRegistry.registerItemShared<WoodenSpear>("bs-Spears:Wooden_Spear", ev.itemRegistry.getNextItemID())
-		->setIconInfo("bs-Spears:wooden_spear", 0)
-		.setMaxStackSize(1);
+	auto& WoodenSpears = ev.itemRegistry.registerItemShared<WoodenSpear>("bs-spears:Wooden_Spear", ev.itemRegistry.getNextItemID())
+		->setIconInfo("bs-spears:wooden_spear", 0)
+		.setMaxStackSize(1)
+		.setMaxDamage(63);
 }
