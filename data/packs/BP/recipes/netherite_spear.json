@@ -1,0 +1,23 @@
+{
+    "format_version": "1.17",
+    "minecraft:recipe_smithing_transform": {
+        "description": {
+            "identifier": "crafting:recipe"
+        },
+        "tags": [
+            "smithing_table"
+        ],
+        "template": {
+            "item": "bs-spears:diamond_spear"
+        },
+        "base": {
+            "item": "minecraft:netherite_upgrade_smithing_template"
+        },
+        "addition": {
+            "item": "minecraft:netherite_ingot"
+        },
+        "result": {
+            "item": "bs-spears:netherite_spear"
+        }
+    }
+}
