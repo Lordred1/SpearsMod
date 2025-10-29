@@ -63,4 +63,8 @@ void ModSpears::registerItems(RegisterItemsEvent& ev){
 		->setIconInfo("bs-spears:wooden_spear", 0)
 		.setMaxStackSize(1)
 		.setMaxDamage(63);
+	auto& StoneSpears = ev.itemRegistry.registerItemShared<Items>("bs-spears:Stone_Spear", ev.itemRegistry.getNexItemID())
+		->setIconInfo("bs-spears:stone_spear", 0)
+		.setMaxStackSize(1)
+		.setMaxDamage(153);
 }
