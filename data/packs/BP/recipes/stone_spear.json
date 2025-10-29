@@ -14,14 +14,14 @@
         ],
         "key": {
             "#": {
-                "item": "minecraft:cobble_stone"
+                "item": "minecraft:cobblestone"
             },
             "/": {
                 "item": "minecraft:stick"
             }
         },
         "result": {
-            "item": "bs-spears:diamond_spear",
+            "item": "bs-spears:Stone_Spear",
             "count": 1
         }
     }

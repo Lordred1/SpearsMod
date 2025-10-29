@@ -14,19 +14,14 @@
         ],
         "key": {
             "#": {
-                "item": "minecraft:diamond"
+                "item": "minecraft:gold_ingot"
             },
             "/": {
                 "item": "minecraft:stick"
             }
         },
-        "unlock": [
-            {
-                "item": "minecraft:diamond"
-            }
-        ],
         "result": {
-            "item": "bs-spears:Diamond_Spear",
+            "item": "bs-spears:Gold_Spear",
             "count": 1
         }
     }

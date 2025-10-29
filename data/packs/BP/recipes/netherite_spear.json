@@ -8,16 +8,16 @@
             "smithing_table"
         ],
         "template": {
-            "item": "bs-spears:diamond_spear"
+            "item": "minecraft:netherite_upgrade_smithing_template"
         },
         "base": {
-            "item": "minecraft:netherite_upgrade_smithing_template"
+            "item": "bs-spears:diamond_spear"
         },
         "addition": {
             "item": "minecraft:netherite_ingot"
         },
         "result": {
-            "item": "bs-spears:netherite_spear"
+            "item": "bs-spears:Netherite_Spear"
         }
     }
 }

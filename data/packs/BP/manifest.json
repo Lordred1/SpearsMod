@@ -1,0 +1,30 @@
+{
+    "format_version": 2,
+    "header": {
+        "name": "Spears",
+        "description": "By FrederoxDev",
+        "uuid": "ef4aad17-c3d7-42cb-8afc-5a1ac8674ed7",
+        "version": [
+            1,
+            0,
+            0
+        ],
+        "min_engine_version": [
+            1,
+            21,
+            0
+        ]
+    },
+    "modules": [
+        {
+            "type": "Behavior",
+            "uuid": "80e1150a-e503-4962-b201-6e296d177b3f",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ]
+}
+
