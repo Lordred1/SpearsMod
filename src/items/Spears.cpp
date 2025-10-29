@@ -11,36 +11,51 @@
 
 
 float SpeedDamageRatio = 1.4f;
-float newDamage;
+
+float speed = 0.0f;
+
 class WoodenSpear : public Item{
 public:
+
+	
 	WoodenSpear(const std::string& identifier, short numId)
 		: Item(identifier, numId)
 	{
 		Log::Info("Wooden Spear created with id: {}", numId);
-		
 	}
-	virtual float getSpeed() const {
-		return 13.0f;
+	
+	ItemStack& use(ItemStack& itemStack, Player& player) const override {
+		/*const CompoundTag* tag = itemStack.mUserData;
+		int CurrentItemHelth = Item::getDamageValue(tag);
+		CurrentItemHelth++;
+		Item::setDamageValue(itemStack, CurrentItemHelth);
+		Log::Info("Item Health {}", CurrentItemHelth);*/
+		return itemStack;
 	}
 	void hurtActor(ItemStack& stack, Actor& target, Mob& attacker) const override {
-		float playerSpeed = attacker.getSpeed();   // incomplete type mob is not allowed # No compile error when adding Mob.hpp
-		Log::Info("Player speed: {}", playerSpeed);
-		newDamage = (playerSpeed / SpeedDamageRatio) + 2;
 		const CompoundTag* tag = stack.mUserData;
 		int CurrentItemHelth = Item::getDamageValue(tag);
 		CurrentItemHelth++;
 		Item::setDamageValue(stack, CurrentItemHelth);
-	}
-	virtual int getAttackDamage() const override {
-		Log::Info("Damage Being Done: {}", newDamage + 2);
-		return (newDamage + 2);
-	};
-	ItemStack& use(ItemStack& itemStack, Player& player) const override {
-		
-		return itemStack;
+		if (CurrentItemHelth < 0) {
+			Item::setDamageValue(stack, 0);
+		}
 	}
 	
+	virtual void hitActor(ItemStack& itemStack, Actor& actor, Mob& attacker) const override {
+		if (auto* comp = attacker.tryGetComponent<StateVectorComponent>()) {
+			// Calculate full 3D velocity magnitude (always positive)
+			float velocity = comp->mPosDelta.length() * 20.0f;
+			speed = velocity;
+			Log::Info("Player speed: {}", speed);
+		}
+	}
+	
+	virtual int getAttackDamage() const override{
+		Log::Info("Speed: {}", speed);
+		Log::Info("Damage: {}", 2 + (speed / 3) * 2);
+		return 2 + (speed / 3) * 2;
+	};
 };
 
 void ModSpears::registerItems(RegisterItemsEvent& ev){
@@ -48,5 +63,4 @@ void ModSpears::registerItems(RegisterItemsEvent& ev){
 		->setIconInfo("bs-spears:wooden_spear", 0)
 		.setMaxStackSize(1)
 		.setMaxDamage(63);
-
 }
