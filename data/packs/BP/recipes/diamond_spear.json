@@ -2,7 +2,7 @@
     "format_version": "1.12",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "crafting:recipe"
+            "identifier": "bs-spears:Diamond_Spear"
         },
         "tags": [
             "crafting_table"

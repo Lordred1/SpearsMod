@@ -2,7 +2,7 @@
     "format_version": "1.12",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "crafting:recipe"
+            "identifier": "bs-spears:Gold_Spear"
         },
         "tags": [
             "crafting_table"
@@ -14,14 +14,14 @@
         ],
         "key": {
             "#": {
-                "item": "minecraft:planks"
+                "item": "minecraft:gold_ingot"
             },
             "/": {
                 "item": "minecraft:stick"
             }
         },
         "result": {
-            "item": "bs-spears:Wooden_Spear",
+            "item": "bs-spears:Gold_Spear",
             "count": 1
         }
     }

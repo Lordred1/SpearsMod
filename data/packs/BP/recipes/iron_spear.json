@@ -2,7 +2,7 @@
     "format_version": "1.12",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "crafting:recipe"
+            "identifier": "bs-spears:Iron_Spear"
         },
         "tags": [
             "crafting_table"
@@ -14,14 +14,14 @@
         ],
         "key": {
             "#": {
-                "item": "minecraft:cobblestone"
+                "item": "minecraft:iron_ingot"
             },
             "/": {
                 "item": "minecraft:stick"
             }
         },
         "result": {
-            "item": "bs-spears:Stone_Spear",
+            "item": "bs-spears:Iron_Spear",
             "count": 1
         }
     }

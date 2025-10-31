@@ -7,8 +7,7 @@
 #include <amethyst/Log.hpp>
 
 #include "Spears.hpp"
-
-
+#include "mc/src/common/world/item/crafting/Recipe.hpp"
 
 float SpeedDamageRatio = 1.4f;
 
@@ -199,3 +198,5 @@ void ModSpears::registerItems(RegisterItemsEvent& ev){
 		.setCategory(CreativeItemCategory::Equipment);
 	
 }
+
+
